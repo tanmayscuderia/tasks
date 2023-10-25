@@ -40,7 +40,7 @@ I am using a local MongoDB Server on Mac. It is MongoDb version v6.00
 
 
 ## Screenshots
-Large Dsiplay(UHD) Screenshots
+Large Display(UHD) Screenshots
 
 1. Board Sidepanel
 
