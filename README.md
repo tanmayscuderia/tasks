@@ -28,7 +28,7 @@ The UI is responsive and works across devices.
 
 To build you must have mongodb running locally the .env file in server has the path on which it should run you may modify it
 
-To clone hust git clone the repo
+To clone just git clone the repo
 
 When it is downloaded just go inside both the server and client folder and run yarn install
 
