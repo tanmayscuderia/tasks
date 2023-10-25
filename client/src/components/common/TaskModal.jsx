@@ -14,12 +14,9 @@ const modalStyle = {
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
-  width: '50%',
   bgcolor: 'background.paper',
   border: '0px solid #000',
   boxShadow: 24,
-  p: 1,
-  height: '80%'
 }
 
 let timer
@@ -115,7 +112,10 @@ const TaskModal = props => {
       BackdropProps={{ timeout: 500 }}
     >
       <Fade in={task !== undefined}>
-        <Box sx={modalStyle}>
+        <Box 
+          sx={modalStyle}
+          className="modal-box-container"
+        >
           <Box sx={{
             display: 'flex',
             alignItems: 'center',
@@ -126,12 +126,9 @@ const TaskModal = props => {
               <DeleteOutlinedIcon />
             </IconButton>
           </Box>
-          <Box sx={{
-            display: 'flex',
-            height: '100%',
-            flexDirection: 'column',
-            padding: '2rem 5rem 5rem'
-          }}>
+          <Box 
+            className="modal-box-container-fields"
+           >
             <TextField
               value={title}
               onChange={updateTitle}

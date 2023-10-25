@@ -1,0 +1,9 @@
+.menu-show-icon {
+    display: none!important;
+}
+
+@media screen and (max-width: 500px) {
+    .menu-show-icon {
+        display: block!important;
+    }
+}

@@ -6,6 +6,7 @@ import DeleteOutlinedIcon from '@mui/icons-material/DeleteOutlined'
 import sectionApi from '../../api/sectionApi'
 import taskApi from '../../api/taskApi'
 import TaskModal from './TaskModal'
+import '../../css/kanban.css';
 
 let timer
 const timeout = 500
@@ -135,12 +136,9 @@ const Kanban = props => {
       </Box>
       <Divider sx={{ margin: '10px 0' }} />
       <DragDropContext onDragEnd={onDragEnd}>
-        <Box sx={{
-          display: 'flex',
-          alignItems: 'flex-start',
-          width: 'calc(100vw - 400px)',
-          overflowX: 'auto'
-        }}>
+        <Box 
+         className="drag-drog-box"
+        >
           {
             data.map(section => (
               <div key={section.id} style={{ width: '300px' }}>

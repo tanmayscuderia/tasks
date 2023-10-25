@@ -2,23 +2,36 @@ import { useSelector, useDispatch } from 'react-redux'
 import { Box, Drawer, IconButton, List, ListItem, ListItemButton, Typography } from '@mui/material'
 import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined'
 import AddBoxOutlinedIcon from '@mui/icons-material/AddBoxOutlined'
+import CloseIcon from '@mui/icons-material/Close';
 import { Link, useNavigate, useParams } from 'react-router-dom'
-import assets from '../../assets/index'
 import { useEffect, useState } from 'react'
 import boardApi from '../../api/boardApi'
 import { setBoards } from '../../redux/features/boardSlice'
+import { setSidebar } from '../../redux/features/sidebarSlice';
 import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd'
 import FavouriteList from './FavouriteList'
+import '../../css/sidebar.css';
 
 const Sidebar = () => {
   const user = useSelector((state) => state.user.value)
   const boards = useSelector((state) => state.board.value)
+  const showSidebar = useSelector((state) => state.sidebar.value)
+
   const navigate = useNavigate()
   const dispatch = useDispatch()
   const { boardId } = useParams()
   const [activeIndex, setActiveIndex] = useState(0)
+  const [width, setWidth] = useState(window.innerWidth);
 
-  const sidebarWidth = 250
+  function handleWindowSizeChange() {
+    setWidth(window.innerWidth);
+  }
+  useEffect(() => {
+    window.addEventListener('resize', handleWindowSizeChange);
+    return () => {
+      window.removeEventListener('resize', handleWindowSizeChange);
+    }
+  }, []);
 
   useEffect(() => {
     const getBoards = async () => {
@@ -29,6 +42,7 @@ const Sidebar = () => {
         alert(err)
       }
     }
+    dispatch(setSidebar({display: true}))
     getBoards()
   }, [dispatch])
 
@@ -72,25 +86,40 @@ const Sidebar = () => {
     }
   }
 
+  const toggleSideBar = () => {
+    dispatch(setSidebar({display: false}))
+  }
+
+  const toggleSideBarOnListInMobile = () => {
+    if(width <= 500) {
+      dispatch(setSidebar({display: false}))
+    }
+  }
+
   return (
     <Drawer
+      className={showSidebar.display ? 'sidebar-drawer' : 'sidebar-drawer-hidden'}
       container={window.document.body}
       variant='permanent'
-      open={true}
       sx={{
-        width: sidebarWidth,
         height: '100vh',
         '& > div': { borderRight: 'none' }
       }}
     >
       <List
+       className={showSidebar.display ? 'sidebar-drawer-list' : 'sidebar-drawer-list-hidden'}
         disablePadding
         sx={{
-          width: sidebarWidth,
           height: '100vh',
-          backgroundColor: assets.colors.secondary
         }}
       >
+        <Box 
+         className='sidebar-close-icon'
+        >
+            <IconButton>
+              <CloseIcon fontSize='small' onClick={toggleSideBar}/>
+            </IconButton>
+          </Box>     
         <ListItem>
           <Box sx={{
             width: '100%',
@@ -143,6 +172,7 @@ const Sidebar = () => {
                             pl: '20px',
                             cursor: snapshot.isDragging ? 'grab' : 'pointer!important'
                           }}
+                          onClick={toggleSideBarOnListInMobile}
                         >
                           <Typography
                             variant='body2'

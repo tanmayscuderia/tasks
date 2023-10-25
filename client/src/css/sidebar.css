@@ -1,0 +1,36 @@
+.sidebar-drawer {
+    position: relative;
+    width: 250px;
+}
+
+.sidebar-drawer-list {
+    width: 250px;
+}
+
+.sidebar-close-icon {
+    display: none;
+}
+
+@media screen and (max-width: 500px) {
+    .sidebar-drawer, .sidebar-drawer-list {
+        -webkit-transition: width 0.500s ease-in-out;
+        -moz-transition: width 0.500s ease-in-out;
+        -o-transition: width 0.500s ease-in-out;
+        transition: width 0.500s ease-in-out;
+        width: 100vw;
+    }
+
+    .sidebar-close-icon {
+        align-items: center;
+        display: flex;
+        width: 100%;
+    }
+
+    .sidebar-drawer-hidden, .sidebar-drawer-list-hidden {
+        -webkit-transition: width 0.500s ease-in-out;
+        -moz-transition: width 0.500s ease-in-out;
+        -o-transition: width 0.500s ease-in-out;
+        transition: width 0.500s ease-in-out;
+        width: 0;
+    }
+}

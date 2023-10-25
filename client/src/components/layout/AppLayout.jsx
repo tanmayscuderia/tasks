@@ -35,6 +35,7 @@ const AppLayout = () => {
       }}>
         <Sidebar />
         <Box sx={{
+          position: 'relative',
           flexGrow: 1,
           p: 1,
           width: 'max-content'

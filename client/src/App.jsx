@@ -15,7 +15,7 @@ import Login from './pages/Login'
 
 function App() {
   const theme = createTheme({
-    palette: { mode: 'dark' }
+    palette: { mode: 'light' }
   })
 
   return (

@@ -1,0 +1,12 @@
+.drag-drog-box {
+    display: flex;
+    align-items: flex-start;
+    overflow-x: auto;
+    width: calc(100vw - 400px);
+}
+
+@media screen and (max-width: 500px) {
+    .drag-drog-box {
+        width: calc(100vw - 120px);
+    }
+}

@@ -10,6 +10,9 @@ import EmojiPicker from '../components/common/EmojiPicker'
 import Kanban from '../components/common/Kanban'
 import { setBoards } from '../redux/features/boardSlice'
 import { setFavouriteList } from '../redux/features/favouriteSlice'
+import { setSidebar } from '../redux/features/sidebarSlice';
+import MenuIcon from '@mui/icons-material/Menu'
+import '../css/board.css'
 
 let timer
 const timeout = 500
@@ -140,6 +143,10 @@ const Board = () => {
     }
   }
 
+  const showSideBar = () => {
+    dispatch(setSidebar({display: true}))
+  }
+
   return (
     <>
       <Box sx={{
@@ -148,6 +155,10 @@ const Board = () => {
         justifyContent: 'space-between',
         width: '100%'
       }}>
+
+        <IconButton className='menu-show-icon' variant='outlined' onClick={showSideBar}>
+          <MenuIcon />
+        </IconButton>
         <IconButton variant='outlined' onClick={addFavourite}>
           {
             isFavourite ? (

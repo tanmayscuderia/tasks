@@ -48,3 +48,29 @@
   top: 0 !important;
   background: #121212 !important;
 }
+
+.modal-box-container {
+  width: 50%;
+  height: 80%;
+}
+
+.modal-box-container-fields {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  padding: 2rem 5rem 5rem;
+}
+
+@media screen and (max-width: 500px) {
+  .modal-box-container {
+    width: 80%;
+    height: 90%;
+  }
+
+  .modal-box-container-fields {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    padding: 2rem;
+  }
+}
